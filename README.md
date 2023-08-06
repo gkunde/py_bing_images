@@ -4,7 +4,7 @@ A small library for accessing Bing's Image of the Day feed.
 There are known quirks with the feed. Since little is documented, this was developed based on the observed behaviors. The feed will not generate errors when provided bad inputs. It will attempt to either generate a feed based on the parameters it is provided, or return a `NULL` reponse. It is a good idea to verify that the library has returned content, before acting on it.
 
 ## Dependencies
-The following libraries are need by this project
+The following libraries are needed by this project
 * requests
 
 ## Running as a script

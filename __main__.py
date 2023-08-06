@@ -14,7 +14,7 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import SplitResult, parse_qs, parse_qsl, urlsplit
+from urllib.parse import parse_qsl, urlsplit
 
 from bing import Bing
 
@@ -108,7 +108,7 @@ def main():
         action=StoreImageIndex,
         type=int,
         default=0)
-    
+
     arg_parser.add_argument(
         "-m",
         "--metadata",
@@ -169,7 +169,8 @@ def main():
             qs = parse_qsl(split_url.query)
             qs.append(("id", "bing_image.jpg", ))
 
-            filename = [entry[1] for entry in qs if entry[0].strip().lower() == "id"][0]
+            filename = [entry[1]
+                        for entry in qs if entry[0].strip().lower() == "id"][0]
 
             output_filepath: Path = output_path / filename
 
@@ -180,7 +181,8 @@ def main():
 
                 if args.metadata:
 
-                    metadata_filepath = output_path / f"{output_filepath.stem}.json"
+                    metadata_filepath = output_path / \
+                        f"{output_filepath.stem}.json"
 
                     if not metadata_filepath.exists():
 
