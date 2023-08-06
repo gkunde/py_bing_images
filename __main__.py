@@ -100,6 +100,13 @@ def main():
         action=StoreNumberOfEntries,
         type=int,
         default=1)
+    
+    arg_parser.add_argument(
+        "-m",
+        "--metadata",
+        help="""\
+            Save a metadata JSON file containing the image's metadata.""",
+        action="store_true")
 
     arg_parser.add_argument(
         "-x",
@@ -164,12 +171,21 @@ def main():
 
             filename = [entry[1] for entry in qs if entry[0].strip().lower() == "id"][0]
 
-            output_filepath = output_path / filename
+            output_filepath: Path = output_path / filename
 
             if not output_filepath.exists():
 
                 with open(output_filepath, "wb") as save_image:
                     bing.hp_image_archive.get_image(image["url"], save_image)
+
+                if args.metadata:
+
+                    metadata_filepath = output_path / f"{output_filepath.stem}.json"
+
+                    if not metadata_filepath.exists():
+
+                        with open(metadata_filepath, "w") as save_meta:
+                            save_meta.write(json.dumps(image, indent=2))
 
         args.num_entries -= 1
         if args.num_entries <= 0:
