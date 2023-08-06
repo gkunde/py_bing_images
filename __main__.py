@@ -100,13 +100,6 @@ def main():
         action=StoreNumberOfEntries,
         type=int,
         default=1)
-    
-    arg_parser.add_argument(
-        "-m",
-        "--metadata",
-        help="""\
-            Save a metadata JSON file containing the image's metadata.""",
-        action="store_true")
 
     arg_parser.add_argument(
         "-x",
@@ -115,6 +108,13 @@ def main():
         action=StoreImageIndex,
         type=int,
         default=0)
+    
+    arg_parser.add_argument(
+        "-m",
+        "--metadata",
+        help="""\
+            Save a metadata JSON file containing the image's metadata.""",
+        action="store_true")
 
     arg_parser.add_argument(
         "-l",
