@@ -15,6 +15,6 @@ There is a `__main__.py` script included for running the library directly. It's 
 |--help | Prints a help message to the terminal. |
 |--num-entries | Specifies the number of images to download. |
 |--index | Specifies the offset of the first image in the source image feed.
-|--metadata | Enables writing the images metadata to a JSON file.
+|--metadata | Enables writing an image's metadata to a JSON file.
 |--list | Prints the available images date and title to the terminal. (Images are not downloaded)
 |--path | Specifies a directory path to save images to. Defaults to the current working directory.
